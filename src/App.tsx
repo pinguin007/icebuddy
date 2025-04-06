@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Leaf, Sparkles, Crop as Drop, ChevronLeft, ChevronRight, MapPin, ChevronDown, Mail, Phone, MapPinIcon } from 'lucide-react';
+import { Leaf, Sparkles, Crop as Drop, ChevronLeft, ChevronRight, MapPin, ChevronDown, Mail, Phone, MapPinIcon, InstagramIcon } from 'lucide-react';
 
 function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -328,8 +328,8 @@ function App() {
               <p className="text-white/90">Fresh fruit chunks and natural syrups for authentic flavor</p>
             </div>
             <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 hover:transform hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="text-2xl font-bold mb-4">Perfect Mix</h3>
-              <p className="text-white/90">Designed to enhance your favorite beverages with fruity excellence</p>
+              <h3 className="text-2xl font-bold mb-4">Perfect Mix </h3>
+              <p className="text-white/90">Enhance your favorite drinks with fruity excellence</p>
             </div>
           </div>
         </div>
@@ -532,10 +532,10 @@ function App() {
               <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-6">
                 <Mail className="w-6 h-6 text-orange-600" />
               </div>
-              <h3 className="text-xl font-bold text-cyan-900 mb-4">Email Us</h3>
+              <h3 className="text-xl font-bold text-cyan-900 mb-4">Partner With Us</h3>
               <p className="text-gray-600 mb-4">We'll respond within 24 hours</p>
-              <a href="mailto:hello@icebuddy.com" className="text-orange-600 hover:text-orange-700 font-medium">
-                hello@icebuddy.com
+              <a href="mailto:clearhumansolutions@gmail.com" className="text-orange-600 hover:text-orange-700 font-medium">
+                clearhumansolutions@gmail.com
               </a>
             </div>
             <div className="bg-white rounded-3xl p-8 shadow-lg hover:transform hover:-translate-y-2 transition-all">
@@ -550,13 +550,13 @@ function App() {
             </div>
             <div className="bg-white rounded-3xl p-8 shadow-lg hover:transform hover:-translate-y-2 transition-all">
               <div className="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
-                <MapPinIcon className="w-6 h-6 text-cyan-600" />
+                <InstagramIcon className="w-6 h-6 text-cyan-600" />
               </div>
-              <h3 className="text-xl font-bold text-cyan-900 mb-4">Visit Us</h3>
+              <h3 className="text-xl font-bold text-cyan-900 mb-4">Follow Our Journey</h3>
               <p className="text-gray-600 mb-4"></p>
               <address className="text-cyan-600 not-italic">
                 <br />
-                Kitchener, ON
+                <a href="https://www.instagram.com/chshelps/">@chshelps</a>
               </address>
             </div>
           </div>
@@ -571,8 +571,8 @@ function App() {
             alt="Ice Buddy Logo" 
             className="h-16 mx-auto mb-6"
           />
-          <p className="text-white/90">© 2024 Ice Buddy. All rights reserved.</p>
-          <p className="mt-3 text-white/80">Made with ❄️ in Canada</p>
+          <p className="text-white/90">© 2025 Ice Buddy. All rights reserved.</p>
+          <p className="mt-3 text-white/80">Proudly Made in Canada 🍁</p>
         </div>
       </footer>
     </div>
