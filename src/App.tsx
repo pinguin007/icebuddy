@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Leaf, Sparkles, Crop as Drop, ChevronLeft, ChevronRight, MapPin, ChevronDown, Mail, Phone, MapPinIcon, InstagramIcon } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MapPin, ChevronDown, Mail, Phone, InstagramIcon, Menu, Droplets } from 'lucide-react';
 
 function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [expandedLocation, setExpandedLocation] = useState<number | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [feedbackForm, setFeedbackForm] = useState({
     name: '',
     email: '',
@@ -23,9 +24,9 @@ function App() {
         "❤️ Add a drink of your choice - Just Shake and Drink!",
         "❤️ 10% of All Proceeds Go to Charity"
       ],
-      cta: "Whether you're chilling with friends or powering through your day, ICE BUDDY is the perfect pick-me-up.",
+      cta: "Powering through your day? ICE BUDDY is the perfect pick-me-up.",
       image: "/images/can-blueberry.png",
-      color: "from-cyan-500 to-blue-600",
+      color: "from-cyan-400 to-blue-500",
       accent: "text-cyan-100"
     },
     {
@@ -196,16 +197,18 @@ function App() {
       </div>
 
       {/* Hero Section */}
-      <header className="relative min-h-screen flex flex-col">
+      <header className="relative h-screen flex flex-col overflow-hidden">
         {/* Navigation */}
-        <nav className="absolute top-0 left-0 right-0 z-50">
+        <nav className="fixed top-0 left-0 right-0 z-50">
           <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <img 
               src="/images/logo.png" 
               alt="Ice Buddy Logo"
-              className="h-16"
+              className="h-12 md:h-16"
             />
-            <div className="flex gap-8 text-white text-lg font-semibold">
+            
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex gap-8 text-white text-lg font-semibold">
               <button 
                 onClick={() => scrollToSection('locations')} 
                 className="hover:text-cyan-200 transition-colors"
@@ -225,6 +228,96 @@ function App() {
                 Contact Us
               </button>
             </div>
+
+            {/* Mobile Menu Button */}
+            <button 
+              className={`md:hidden relative w-10 h-10 bg-white/10 rounded-full backdrop-blur-sm hover:bg-white/20 transition-all duration-300 z-50 ${
+                mobileMenuOpen ? 'rotate-90' : ''
+              }`}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            >
+              <span className={`absolute left-1/2 top-1/2 block w-5 h-0.5 bg-white transform -translate-x-1/2 transition-all duration-300 ${
+                mobileMenuOpen ? 'rotate-45 !translate-y-0' : '-translate-y-1.5'
+              }`}></span>
+              <span className={`absolute left-1/2 top-1/2 block w-5 h-0.5 bg-white transform -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 ${
+                mobileMenuOpen ? 'opacity-0' : ''
+              }`}></span>
+              <span className={`absolute left-1/2 top-1/2 block w-5 h-0.5 bg-white transform -translate-x-1/2 transition-all duration-300 ${
+                mobileMenuOpen ? '-rotate-45 !translate-y-0' : 'translate-y-1'
+              }`}></span>
+            </button>
+          </div>
+
+          {/* Mobile Navigation Menu */}
+          <div className={`
+            md:hidden fixed inset-0 transition-all duration-500
+            ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
+          `}>
+            {/* Backdrop */}
+            <div className={`absolute inset-0 bg-gradient-to-br from-cyan-500/95 to-blue-600/95 backdrop-blur-md transition-all duration-500 ${
+              mobileMenuOpen ? 'opacity-100' : 'opacity-0'
+            }`} onClick={() => setMobileMenuOpen(false)} />
+            
+            {/* Menu Content */}
+            <div className={`relative flex flex-col items-center justify-center h-full gap-12 transform transition-all duration-500 ${
+              mobileMenuOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
+            }`}>
+              {/* Close Button */}
+              <button
+                className="absolute top-4 right-4 w-10 h-10 bg-white/10 rounded-full backdrop-blur-sm hover:bg-white/20 transition-all duration-300 flex items-center justify-center group"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                <div className="relative w-6 h-6">
+                  <span className="absolute top-1/2 left-0 w-6 h-0.5 bg-white transform -translate-y-1/2 rotate-45 group-hover:scale-110 transition-transform"></span>
+                  <span className="absolute top-1/2 left-0 w-6 h-0.5 bg-white transform -translate-y-1/2 -rotate-45 group-hover:scale-110 transition-transform"></span>
+                </div>
+              </button>
+
+              {/* Logo */}
+              <img 
+                src="/images/logo.png" 
+                alt="Ice Buddy Logo"
+                className="h-16 mb-8 animate-float"
+              />
+              
+              {/* Navigation Links */}
+              <button 
+                onClick={() => {
+                  scrollToSection('locations');
+                  setMobileMenuOpen(false);
+                }}
+                className="group relative text-2xl font-semibold text-white hover:text-cyan-200 transition-colors"
+              >
+                <span className="relative z-10">Locations</span>
+                <span className="absolute inset-x-0 -bottom-2 h-1 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+              </button>
+              <button 
+                onClick={() => {
+                  scrollToSection('feedback');
+                  setMobileMenuOpen(false);
+                }}
+                className="group relative text-2xl font-semibold text-white hover:text-cyan-200 transition-colors"
+              >
+                <span className="relative z-10">Feedback Form</span>
+                <span className="absolute inset-x-0 -bottom-2 h-1 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+              </button>
+              <button 
+                onClick={() => {
+                  scrollToSection('contact');
+                  setMobileMenuOpen(false);
+                }}
+                className="group relative text-2xl font-semibold text-white hover:text-cyan-200 transition-colors"
+              >
+                <span className="relative z-10">Contact Us</span>
+                <span className="absolute inset-x-0 -bottom-2 h-1 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full"></span>
+              </button>
+
+              {/* Decorative Elements */}
+              <div className="absolute top-10 right-10 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
+              <div className="absolute bottom-10 left-10 w-40 h-40 bg-blue-400/5 rounded-full blur-2xl"></div>
+            </div>
           </div>
         </nav>
 
@@ -237,30 +330,32 @@ function App() {
                 index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
               }`}
             >
-              <div className={`h-full bg-gradient-to-br ${flavor.color}`}>
-                <div className="h-full max-w-7xl mx-auto px-4 py-12 flex items-center justify-between">
-                  <div className="w-1/2 text-white">
-                    <h2 className="text-5xl font-bold mb-4">{flavor.name}</h2>
-                    <p className="text-2xl mb-8 text-white/90">{flavor.tagline}</p>
-                    <p className="text-lg mb-8 text-white/80">{flavor.description}</p>
-                    <div className="space-y-3 mb-8">
+              <div className={`h-screen bg-gradient-to-br ${flavor.color}`}>
+                <div className="h-full max-w-7xl mx-auto px-4 pt-16 pb-4 md:py-16 flex flex-col md:flex-row items-center justify-center">
+                  <div className="w-full md:w-1/2 text-white text-center md:text-left mb-4 md:mb-0">
+                    <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 md:mb-4">{flavor.name}</h2>
+                    <p className="text-lg sm:text-xl md:text-2xl mb-2 md:mb-6 text-white/90">{flavor.tagline}</p>
+                    <p className="text-sm sm:text-base md:text-lg mb-2 md:mb-6 text-white/80">{flavor.description}</p>
+                    <div className="space-y-1 md:space-y-3 mb-2 md:mb-6">
                       {flavor.features.map((feature, i) => (
-                        <p key={i} className="text-lg">{feature}</p>
+                        <p key={i} className="text-sm sm:text-base md:text-lg">{feature}</p>
                       ))}
                     </div>
-                    <p className="text-lg mb-8 text-white/90">{flavor.cta}</p>
+                    <p className="text-sm sm:text-base md:text-lg mb-3 md:mb-6 text-white/90">{flavor.cta}</p>
                     <button 
-                      className="bg-white text-cyan-600 px-12 py-4 rounded-full text-xl font-semibold hover:bg-cyan-50 transition-colors"
+                      className="bg-white text-cyan-600 px-6 sm:px-8 md:px-12 py-2 sm:py-3 md:py-4 rounded-full text-base sm:text-lg md:text-xl font-semibold hover:bg-cyan-50 transition-colors"
                     >
                       BUY NOW
                     </button>
                   </div>
-                  <div className="w-1/2 relative">
-                    <img 
-                      src={flavor.image}
-                      alt={flavor.name}
-                      className="w-full h-auto max-h-[600px] object-contain transform hover:scale-105 transition-transform duration-300"
-                    />
+                  <div className="w-full md:w-1/2 relative flex items-center justify-center">
+                    <div className="w-full max-w-[240px] sm:max-w-[280px] md:max-w-none">
+                      <img 
+                        src={flavor.image}
+                        alt={flavor.name}
+                        className="w-full h-auto max-h-[220px] sm:max-h-[280px] md:max-h-[600px] object-contain transform hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -284,17 +379,17 @@ function App() {
       </header>
 
       {/* Products Section */}
-      <section className="py-24 px-4 bg-gradient-to-b from-orange-50 to-yellow-50">
+      <section className="pt-32 md:pt-24 pb-24 px-4 bg-gradient-to-b from-orange-50 to-yellow-50">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-20 text-cyan-900">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 md:mb-20 text-cyan-900">
             Shake and Drink
           </h2>
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {flavors.map((flavor, index) => (
               <div key={index} className="group relative">
                 <div className={`absolute inset-0 bg-gradient-to-r ${flavor.color} rounded-3xl transform rotate-6 group-hover:rotate-12 transition-transform duration-300`}></div>
                 <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl">
-                  <div className="h-72 overflow-hidden rounded-2xl mb-6">
+                  <div className="h-64 sm:h-72 overflow-hidden rounded-2xl mb-6">
                     <img 
                       src={flavor.image} 
                       alt={flavor.name}
@@ -304,7 +399,7 @@ function App() {
                   <h3 className="text-2xl font-bold text-cyan-900 mb-3">{flavor.name}</h3>
                   <p className="text-cyan-700 mb-4">{flavor.description}</p>
                   <p className="flex items-center gap-2 text-cyan-600 font-medium">
-                    <Drop className="w-4 h-4" />
+                    <Droplets className="w-4 h-4" />
                     Perfect Mix
                   </p>
                 </div>
@@ -318,18 +413,18 @@ function App() {
       <section className="py-24 px-4 bg-gradient-to-r from-orange-400 to-yellow-300">
         <div className="max-w-7xl mx-auto text-white">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-20">The Ice Buddy Experience</h2>
-          <div className="grid md:grid-cols-3 gap-12">
-            <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 hover:transform hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="text-2xl font-bold mb-4">Premium Ice</h3>
-              <p className="text-white/90">Crystal clear, perfectly shaped ice that keeps your drink chilled longer</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+            <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-6 md:p-8 hover:transform hover:-translate-y-2 transition-transform duration-300">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Premium Ice</h3>
+              <p className="text-white/90 text-sm md:text-base">Crystal clear, perfectly shaped ice that keeps your drink chilled longer</p>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 hover:transform hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="text-2xl font-bold mb-4">Real Fruit</h3>
-              <p className="text-white/90">Fresh fruit chunks and natural syrups for authentic flavor</p>
+            <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-6 md:p-8 hover:transform hover:-translate-y-2 transition-transform duration-300">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Real Fruit</h3>
+              <p className="text-white/90 text-sm md:text-base">Fresh fruit chunks and natural syrups for authentic flavor</p>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 hover:transform hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="text-2xl font-bold mb-4">Perfect Mix </h3>
-              <p className="text-white/90">Enhance your favorite drinks with fruity excellence</p>
+            <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-6 md:p-8 hover:transform hover:-translate-y-2 transition-transform duration-300">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Perfect Mix </h3>
+              <p className="text-white/90 text-sm md:text-base">Enhance your favorite drinks with fruity excellence</p>
             </div>
           </div>
         </div>
@@ -341,9 +436,9 @@ function App() {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-20 text-cyan-900">
             Where To Find Us
           </h2>
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
             {/* Locations List */}
-            <div className="space-y-8">
+            <div className="space-y-6 md:space-y-8">
               {locations.map((location, index) => (
                 <div 
                   key={index} 
@@ -354,7 +449,7 @@ function App() {
                 >
                   <button 
                     onClick={() => toggleLocation(index)}
-                    className="w-full text-left p-6 hover:bg-orange-50/50 transition-colors"
+                    className="w-full text-left p-4 md:p-6 hover:bg-orange-50/50 transition-colors"
                   >
                     <div className="flex items-start gap-4">
                       <div className="p-3 bg-gradient-to-br from-orange-400 to-yellow-300 rounded-full shadow-lg">
@@ -527,15 +622,15 @@ function App() {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-20 text-cyan-900">
             Get in Touch
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-3xl p-8 shadow-lg hover:transform hover:-translate-y-2 transition-all">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-6">
-                <Mail className="w-6 h-6 text-orange-600" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+            <div className="bg-white rounded-3xl p-6 md:p-8 shadow-lg hover:transform hover:-translate-y-2 transition-all">
+              <div className="w-10 md:w-12 h-10 md:h-12 bg-orange-100 rounded-full flex items-center justify-center mb-4 md:mb-6">
+                <Mail className="w-5 md:w-6 h-5 md:h-6 text-orange-600" />
               </div>
-              <h3 className="text-xl font-bold text-cyan-900 mb-4">Partner With Us</h3>
-              <p className="text-gray-600 mb-4">We'll respond within 24 hours</p>
-              <a href="mailto:clearhumansolutions@gmail.com" className="text-orange-600 hover:text-orange-700 font-medium">
-                clearhumansolutions@gmail.com
+              <h3 className="text-lg md:text-xl font-bold text-cyan-900 mb-3 md:mb-4">Partner With Us</h3>
+              <p className="text-gray-600 mb-3 md:mb-4 text-sm md:text-base">We'll respond within 24 hours</p>
+              <a href="mailto:icebuddy@chshelps.com" className="text-orange-600 hover:text-orange-700 font-medium text-sm md:text-base">
+                icebuddy@chshelps.com
               </a>
             </div>
             <div className="bg-white rounded-3xl p-8 shadow-lg hover:transform hover:-translate-y-2 transition-all">
@@ -556,7 +651,7 @@ function App() {
               <p className="text-gray-600 mb-4"></p>
               <address className="text-cyan-600 not-italic">
                 <br />
-                <a href="https://www.instagram.com/chshelps/">@chshelps</a>
+                <a href="https://www.instagram.com/icebuddycanada/">@icebuddycanada</a>
               </address>
             </div>
           </div>
@@ -564,15 +659,15 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-orange-400 to-yellow-400 text-white py-12 px-4">
+      <footer className="bg-gradient-to-r from-orange-400 to-yellow-400 text-white py-8 md:py-12 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <img 
             src="/images/logo.png" 
             alt="Ice Buddy Logo" 
-            className="h-16 mx-auto mb-6"
+            className="h-12 md:h-16 mx-auto mb-4 md:mb-6"
           />
-          <p className="text-white/90">© 2025 Ice Buddy. All rights reserved.</p>
-          <p className="mt-3 text-white/80">Proudly Made in Canada 🍁</p>
+          <p className="text-white/90 text-sm md:text-base">© 2025 Ice Buddy. All rights reserved.</p>
+          <p className="mt-2 md:mt-3 text-white/80 text-sm md:text-base">Proudly Made in Canada 🍁</p>
         </div>
       </footer>
     </div>
