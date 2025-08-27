@@ -334,9 +334,8 @@ function App() {
                 <div className="h-full max-w-7xl mx-auto px-4 pt-16 pb-4 md:py-16 flex flex-col md:flex-row items-center justify-center">
                   <div className="w-full md:w-1/2 text-white text-center md:text-left mb-4 md:mb-0">
                     <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-2 md:mb-4">{flavor.name}</h2>
-                    <p className="text-lg sm:text-xl md:text-2xl mb-2 md:mb-6 text-white/90">{flavor.tagline}</p>
-                    <p className="text-sm sm:text-base md:text-lg mb-2 md:mb-6 text-white/80">{flavor.description}</p>
-                    <div className="space-y-1 md:space-y-3 mb-2 md:mb-6">
+                    <p className="text-lg sm:text-xl md:text-2xl mb-4 md:mb-8 text-white/90">{flavor.tagline}</p>
+                    <div className="space-y-1 md:space-y-3 mb-4 md:mb-8">
                       {flavor.features.map((feature, i) => (
                         <p key={i} className="text-sm sm:text-base md:text-lg">{feature}</p>
                       ))}
