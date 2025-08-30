@@ -410,20 +410,20 @@ function App() {
 
       {/* Features Section */}
       <section className="py-24 px-4 bg-gradient-to-r from-orange-400 to-yellow-300">
-        <div className="max-w-7xl mx-auto text-white">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-20">The Ice Buddy Experience</h2>
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-20 text-white drop-shadow-md">The Ice Buddy Experience</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
-            <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-6 md:p-8 hover:transform hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Premium Ice</h3>
-              <p className="text-white/90 text-sm md:text-base">Crystal clear, perfectly shaped ice that keeps your drink chilled longer</p>
+            <div className="bg-white/30 backdrop-blur-md rounded-3xl p-6 md:p-8 hover:transform hover:-translate-y-2 transition-all duration-300 hover:bg-white/40 shadow-lg">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-white drop-shadow-sm">Premium Ice</h3>
+              <p className="text-white text-base md:text-lg font-medium drop-shadow-sm leading-relaxed">Crystal clear, perfectly shaped ice that keeps your drink chilled longer</p>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-6 md:p-8 hover:transform hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Real Fruit</h3>
-              <p className="text-white/90 text-sm md:text-base">Fresh fruit chunks and natural syrups for authentic flavor</p>
+            <div className="bg-white/30 backdrop-blur-md rounded-3xl p-6 md:p-8 hover:transform hover:-translate-y-2 transition-all duration-300 hover:bg-white/40 shadow-lg">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-white drop-shadow-sm">Real Fruit</h3>
+              <p className="text-white text-base md:text-lg font-medium drop-shadow-sm leading-relaxed">Fresh fruit chunks and natural syrups for authentic flavor</p>
             </div>
-            <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-6 md:p-8 hover:transform hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Perfect Mix </h3>
-              <p className="text-white/90 text-sm md:text-base">Enhance your favorite drinks with fruity excellence</p>
+            <div className="bg-white/30 backdrop-blur-md rounded-3xl p-6 md:p-8 hover:transform hover:-translate-y-2 transition-all duration-300 hover:bg-white/40 shadow-lg">
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-white drop-shadow-sm">Perfect Mix</h3>
+              <p className="text-white text-base md:text-lg font-medium drop-shadow-sm leading-relaxed">Enhance your favorite drinks with fruity excellence</p>
             </div>
           </div>
         </div>
