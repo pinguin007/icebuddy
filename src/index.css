@@ -90,7 +90,7 @@
 }
 
 .ice-cube {
-  @apply fixed w-24 h-24 pointer-events-none z-20 opacity-30;
+  @apply fixed w-12 h-12 pointer-events-none z-20 opacity-30;
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.8),

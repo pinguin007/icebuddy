@@ -144,26 +144,26 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-cyan-500 via-white to-orange-50 overflow-hidden">
       {/* Decorative Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-[1]">
         {/* Left Side Decorations */}
         <img 
           src="/images/can-blueberry.png"
           alt=""
-          className="fruit-decoration w-32 h-32 left-[5%] top-[20%] animate-float"
+          className="fruit-decoration w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48 left-[-2%] sm:left-[0%] md:left-[5%] lg:left-[8%] xl:left-[10%] top-[20%] animate-float"
           style={{ animationDelay: '0s' }}
         />
         <div 
-          className="ice-cube left-[12%] top-[40%] animate-float"
+          className="ice-cube w-4 h-4 sm:w-6 sm:h-6 md:w-12 md:h-12 lg:w-16 lg:h-16 xl:w-20 xl:h-20 left-[2%] sm:left-[8%] md:left-[12%] lg:left-[15%] xl:left-[18%] top-[40%] animate-float"
           style={{ animationDelay: '1s', transform: 'rotateX(15deg) rotateY(-15deg)' }}
         />
         <img 
           src="/images/can-strawberry.png"
           alt=""
-          className="fruit-decoration w-32 h-32 left-[8%] top-[60%] animate-float"
+          className="fruit-decoration w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48 left-[0%] sm:left-[4%] md:left-[8%] lg:left-[12%] xl:left-[15%] top-[60%] animate-float"
           style={{ animationDelay: '2s' }}
         />
         <div 
-          className="ice-cube left-[15%] top-[80%] animate-float"
+          className="ice-cube w-4 h-4 sm:w-6 sm:h-6 md:w-12 md:h-12 lg:w-16 lg:h-16 xl:w-20 xl:h-20 left-[4%] sm:left-[10%] md:left-[15%] lg:left-[18%] xl:left-[20%] top-[80%] animate-float"
           style={{ animationDelay: '3s', transform: 'rotateX(-15deg) rotateY(-15deg)' }}
         />
 
@@ -171,21 +171,21 @@ function App() {
         <img 
           src="/images/can-pineapple.png"
           alt=""
-          className="fruit-decoration w-32 h-32 right-[5%] top-[25%] animate-float"
+          className="fruit-decoration w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48 right-[-2%] sm:right-[0%] md:right-[5%] lg:right-[8%] xl:right-[10%] top-[25%] animate-float"
           style={{ animationDelay: '1.5s' }}
         />
         <div 
-          className="ice-cube right-[12%] top-[45%] animate-float"
+          className="ice-cube w-4 h-4 sm:w-6 sm:h-6 md:w-12 md:h-12 lg:w-16 lg:h-16 xl:w-20 xl:h-20 right-[2%] sm:right-[8%] md:right-[12%] lg:right-[15%] xl:right-[18%] top-[45%] animate-float"
           style={{ animationDelay: '2.5s', transform: 'rotateX(15deg) rotateY(15deg)' }}
         />
         <img 
           src="/images/can-lemon-mint.png"
           alt=""
-          className="fruit-decoration w-32 h-32 right-[8%] top-[65%] animate-float"
+          className="fruit-decoration w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48 right-[0%] sm:right-[4%] md:right-[8%] lg:right-[12%] xl:right-[15%] top-[65%] animate-float"
           style={{ animationDelay: '3.5s' }}
         />
         <div 
-          className="ice-cube right-[15%] top-[85%] animate-float"
+          className="ice-cube w-4 h-4 sm:w-6 sm:h-6 md:w-12 md:h-12 lg:w-16 lg:h-16 xl:w-20 xl:h-20 right-[4%] sm:right-[10%] md:right-[15%] lg:right-[18%] xl:right-[20%] top-[85%] animate-float"
           style={{ animationDelay: '4s', transform: 'rotateX(-15deg) rotateY(15deg)' }}
         />
 
@@ -430,8 +430,9 @@ function App() {
       </section>
 
       {/* Locations Section */}
-      <section id="locations" className="py-24 px-4 bg-gradient-to-b from-yellow-50 to-orange-50">
-        <div className="max-w-7xl mx-auto">
+      <section id="locations" className="relative py-24 px-4">
+        <div className="absolute inset-0 bg-gradient-to-b from-yellow-50 to-orange-50 z-0"></div>
+        <div className="relative z-[1] max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-20 text-cyan-900">
             Where To Find Us
           </h2>
@@ -441,7 +442,7 @@ function App() {
               {locations.map((location, index) => (
                 <div 
                   key={index} 
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300"
+                  className="relative bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden transition-all duration-300 z-[2]"
                   style={{
                     maxHeight: expandedLocation === index ? '800px' : '120px'
                   }}
@@ -530,7 +531,7 @@ function App() {
                   </div>
                 ))}
 
-                {/* Decorative Elements */}
+                {/* Map Label */}
                 <div className="absolute bottom-4 right-4 text-white/60 text-sm font-medium">
                   Ice Buddy Locations
                 </div>
@@ -541,12 +542,12 @@ function App() {
       </section>
 
       {/* Feedback Form Section */}
-      <section id="feedback" className="py-24 px-4 bg-gradient-to-b from-orange-50 to-yellow-50">
+      <section id="feedback" className="relative py-24 px-4 bg-gradient-to-b from-orange-50 to-yellow-50 z-10">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-cyan-900">
             Share Your Experience
           </h2>
-          <form onSubmit={handleFeedbackSubmit} className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+          <form onSubmit={handleFeedbackSubmit} className="relative bg-white/95 backdrop-blur-sm rounded-3xl shadow-xl p-8 md:p-12 z-[2]">
             <div className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -616,13 +617,13 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 px-4 bg-gradient-to-b from-yellow-50 to-orange-100">
+      <section id="contact" className="relative py-24 px-4 bg-gradient-to-b from-yellow-50 to-orange-100 z-10">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-20 text-cyan-900">
             Get in Touch
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-            <div className="bg-white rounded-3xl p-6 md:p-8 shadow-lg hover:transform hover:-translate-y-2 transition-all">
+            <div className="relative bg-white/95 backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-lg hover:transform hover:-translate-y-2 transition-all z-[2]">
               <div className="w-10 md:w-12 h-10 md:h-12 bg-orange-100 rounded-full flex items-center justify-center mb-4 md:mb-6">
                 <Mail className="w-5 md:w-6 h-5 md:h-6 text-orange-600" />
               </div>
